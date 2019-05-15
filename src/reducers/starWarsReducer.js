@@ -11,15 +11,13 @@ export const charsReducer = (state = initialState, action) => {
     case FETCH_CHARACTERS_START:
       return {
         ...state,
-        isFetching: true,
-        error: ''
+        isLoading: true,
       };
     case FETCH_CHARACTERS_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        error: '',
-        characters: action.payload
+        characters: [...state.characters, ...action.payload]
       };
     case FETCH_CHARACTERS_ERROR:
       return {
